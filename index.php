@@ -94,9 +94,13 @@
                   No Resi : <?= $dataJson->query->waybill ?>, <b>Kurir : <?= $dataJson->query->courier ?></b>
                 </div>
                 <div class="card-body">
-                  Status Paket : <?= $dataJson->result->delivery_status->status ?> <br>
-                  Penerima : <?= $dataJson->result->delivery_status->pod_receiver ?> <br>
-                  Tanggal : <?= $dataJson->result->delivery_status->pod_date ?> | <?= $dataJson->result->delivery_status->pod_time ?> <br>
+                  <?php if(!empty($dataJson->result)):  ?>
+                    Status Paket : <?= $dataJson->result->delivery_status->status ?> <br>
+                    Penerima : <?= $dataJson->result->delivery_status->pod_receiver ?> <br>
+                    Tanggal : <?= $dataJson->result->delivery_status->pod_date ?> | <?= $dataJson->result->delivery_status->pod_time ?> <br>
+                  <?php else: ?>
+                    <?= $dataJson->status->description ?>
+                  <?php endif?>
                 </div>
               </div>
               <?php endforeach ?>
